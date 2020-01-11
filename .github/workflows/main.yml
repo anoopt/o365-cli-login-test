@@ -6,11 +6,6 @@ jobs:
   create-event:
     runs-on: ubuntu-latest
     name: Login
-    
-    steps: 
-    # npm install o365 cli
-    - name: Run npm install O365 CLI
-      run: npm install -g @pnp/office365-cli
 
     - name: Checkout
       uses: actions/checkout@v1

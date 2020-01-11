@@ -31,5 +31,4 @@ async function executeO365CLICommand(command: string) {
     }
 }
 
-
 main();
