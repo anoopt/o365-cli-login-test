@@ -11,16 +11,6 @@ jobs:
         node-version: [10.x]
     
     steps:
-    # Setup node.js runtime
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    
-    # npm install o365 cli
-    - name: Run npm install O365 CLI
-      run: npm install -g @pnp/office365-cli
-
     - name: Checkout
       uses: actions/checkout@v1
 
