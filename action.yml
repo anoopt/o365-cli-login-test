@@ -1,0 +1,14 @@
+name: "CLI Lohin"
+description: "CLI Login."
+author: "Anoop Tatti"
+branding:
+  icon: "calendar"
+  color: "orange"
+inputs:
+  USERNAME:
+    description: "Username."
+  PASSWORD:
+    description: "Password."
+runs:
+  using: "node12"
+  main: "dist/index.js"

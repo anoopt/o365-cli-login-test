@@ -1,0 +1,16 @@
+name: O365 CLI Test
+
+on: [pull_request]
+
+jobs:
+  create-event:
+    runs-on: ubuntu-latest
+    name: O365 Login
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Login
+      uses: ./
+      env:
+        USERNAME: ${{ secrets.username }}
+        PASSWORD: ${{ secrets.password }}
