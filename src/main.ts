@@ -7,7 +7,7 @@ var cliPath: string;
 async function main() {
     try{
 
-        await exec.exec("npm install @pnp/office365-cli");
+        await exec.exec("npm install -g @pnp/office365-cli");
         
         cliPath = await io.which("o365", true);
         await executeO365CLICommand("status");
