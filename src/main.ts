@@ -7,7 +7,7 @@ var cliPath: string;
 async function main() {
     try{
         
-        cliPath = await io.which("cli", true);
+        cliPath = await io.which("o365", true);
         await executeO365CLICommand("status");
 
         let username = process.env.USERNAME;
