@@ -1,6 +1,6 @@
 name: O365 CLI Test
 
-on: [pull_request]
+on: [push]
 
 jobs:
   create-event:
