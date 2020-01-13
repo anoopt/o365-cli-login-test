@@ -9,10 +9,12 @@ async function main() {
         core.info("Installing Office 365 CLI.");
 
         let o365CLIInstallCommand: string = "npm install -g @pnp/office365-cli";
+        const options: any = {};
+        options.silent = true;
         if(process.env.RUNNER_OS == "Windows") {
-            let installOutput: any = await exec.exec(o365CLIInstallCommand);
+            let installOutput: any = await exec.exec(o365CLIInstallCommand, [], options);
         } else {
-            let installOutput: any = await exec.exec(`sudo ${o365CLIInstallCommand}`);
+            let installOutput: any = await exec.exec(`sudo ${o365CLIInstallCommand}`, [], options);
         }
         o365CLIPath = await io.which("o365", true);
         

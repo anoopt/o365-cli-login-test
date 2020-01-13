@@ -74,11 +74,13 @@ function main() {
         try {
             core.info("Installing Office 365 CLI.");
             let o365CLIInstallCommand = "npm install -g @pnp/office365-cli";
+            const options = {};
+            options.silent = true;
             if (process.env.RUNNER_OS == "Windows") {
-                let installOutput = yield exec.exec(o365CLIInstallCommand);
+                let installOutput = yield exec.exec(o365CLIInstallCommand, [], options);
             }
             else {
-                let installOutput = yield exec.exec(`sudo ${o365CLIInstallCommand}`);
+                let installOutput = yield exec.exec(`sudo ${o365CLIInstallCommand}`, [], options);
             }
             o365CLIPath = yield io.which("o365", true);
             core.info("Completed installing Office 365 CLI.");
