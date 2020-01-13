@@ -28,4 +28,4 @@ jobs:
         OVERWRITE: true
     
     - name: ShowAppId
-      run: echo "App Id is ${{steps.deploy.outputs.APP_ID}}"
+      run: echo "App Id  ${{steps.deploy.outputs.APP_ID}}"
