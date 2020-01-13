@@ -1,6 +1,7 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
+import * as fs from 'fs';
 
 var cliPath: string;
 
@@ -18,7 +19,9 @@ async function main() {
         await executeO365CLICommand("status");
         console.log("Login successful.");
 
+        fs.chmodSync("./scripts/mail.sh", 0o755); 
         await exec.exec('"./scripts/mail.sh"');
+        
 
     } catch (error) {
         core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
