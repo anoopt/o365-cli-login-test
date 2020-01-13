@@ -3,7 +3,7 @@ name: O365 CLI Test
 on: [push]
 
 jobs:
-  create-event:
+  o365-cli-test:
     runs-on: ubuntu-latest
     name: Login
     
