@@ -21,4 +21,4 @@ jobs:
     - name: runscript
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        SCRIPT_PATH: "../scripts/mail.ps1"
+        SCRIPT_PATH: "/scripts/mail.ps1"
