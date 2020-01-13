@@ -24,10 +24,10 @@ jobs:
       with:
         APP_FILE_PATH: "./solutions/spfx-o-365-cli-action.sppkg"
         SCOPE: "sitecollection"
-        SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/testgroup1",
-        SKIP_FEATURE_DEPLOYMENT: true,
-        OVERWRITE: true,
-        VERBOSE: true,
+        SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/testgroup1"
+        SKIP_FEATURE_DEPLOYMENT: true
+        OVERWRITE: true
+        VERBOSE: true
         DEBUG: true
     
     - name: ShowAppId
