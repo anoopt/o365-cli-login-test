@@ -21,4 +21,4 @@ jobs:
     - name: Runscript
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        SCRIPT_PATH: "./scripts/mail.ps1"
+        APP_FILE_PATH: "./solutions/spfx-cicd.sppkg"
