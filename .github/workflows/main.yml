@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   o365-cli-test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     name: O365 CLI commands
     
     steps:
