@@ -19,7 +19,7 @@ async function main() {
         await executeO365CLICommand("status");
         console.log("Login successful.");
 
-        chmodSync("'./scripts/mail.ps1'", 0o755); 
+        chmodSync("./scripts/mail.ps1", 0o755); 
         await exec.exec("/scripts/mail.ps1");
         
 
