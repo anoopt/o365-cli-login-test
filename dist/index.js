@@ -72,6 +72,7 @@ var cliPath;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log(process.env.RUNNER_OS);
             yield exec.exec("npm install -g @pnp/office365-cli");
             cliPath = yield io.which("o365", true);
             let username = process.env.USERNAME;

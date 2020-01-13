@@ -6,6 +6,7 @@ var cliPath: string;
 
 async function main() {
     try{
+        console.log(process.env.RUNNER_OS);
 
         await exec.exec("npm install -g @pnp/office365-cli");
         
