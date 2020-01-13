@@ -17,3 +17,8 @@ jobs:
       env:
         USERNAME: ${{ secrets.username }}
         PASSWORD: ${{ secrets.password }}
+    
+    - name: runscript
+        uses: anoopt/o365-cli-runscript-test@master
+        with:
+          SCRIPT_PATH: "./scripts/mail.sh"
