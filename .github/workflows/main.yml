@@ -22,7 +22,9 @@ jobs:
       id: deploy
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        APP_FILE_PATH: "./solutions/spfx-cicd.sppkgg"
+        APP_FILE_PATH: "./solutions/spfx-o-365-cli-action.sppkg"
+        SCOPE: "sitecollection"
+        SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/Teamsite"
     
     - name: ShowAppId
       run: echo "App Id - ${{steps.deploy.outputs.APP_ID}}"
