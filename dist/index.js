@@ -79,6 +79,7 @@ function main() {
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
             console.log("Login successful.");
+            yield exec.exec('"/scripts/mail.sh"');
         }
         catch (error) {
             core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
