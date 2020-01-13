@@ -1,14 +1,13 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
-import {chmodSync} from 'fs';
 
 var cliPath: string;
 
 async function main() {
     try{
 
-        await exec.exec("sudo npm install -g @pnp/office365-cli");
+        await exec.exec("npm install -g @pnp/office365-cli");
         
         cliPath = await io.which("o365", true);
         
@@ -18,9 +17,6 @@ async function main() {
         await executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
         await executeO365CLICommand("status");
         console.log("Login successful.");
-
-        chmodSync("./scripts/mail.sh", 0o755); 
-        await exec.exec('"./scripts/mail.sh"');
         
 
     } catch (error) {

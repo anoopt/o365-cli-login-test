@@ -68,20 +68,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(682));
 const exec = __importStar(__webpack_require__(736));
 const io = __importStar(__webpack_require__(120));
-const fs_1 = __webpack_require__(747);
 var cliPath;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield exec.exec("sudo npm install -g @pnp/office365-cli");
+            yield exec.exec("npm install -g @pnp/office365-cli");
             cliPath = yield io.which("o365", true);
             let username = process.env.USERNAME;
             let password = process.env.PASSWORD;
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
             console.log("Login successful.");
-            fs_1.chmodSync("./scripts/mail.sh", 0o755);
-            yield exec.exec('"./scripts/mail.sh"');
         }
         catch (error) {
             core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
