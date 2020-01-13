@@ -74,7 +74,6 @@ function main() {
         try {
             yield exec.exec("sudo npm install -g @pnp/office365-cli");
             cliPath = yield io.which("o365", true);
-            yield executeO365CLICommand("status");
             let username = process.env.USERNAME;
             let password = process.env.PASSWORD;
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
