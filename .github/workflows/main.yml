@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   o365-cli-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     name: Login
     
     steps:
@@ -21,4 +21,4 @@ jobs:
     - name: runscript
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        SCRIPT_PATH: "./scripts/mail.sh"
+        SCRIPT_PATH: "./scripts/mail.ps1"
