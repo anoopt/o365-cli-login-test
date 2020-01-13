@@ -18,7 +18,7 @@ async function main() {
         await executeO365CLICommand("status");
         console.log("Login successful.");
 
-        await exec.exec('"/scripts/mail.sh"');
+        await exec.exec('"./scripts/mail.sh"');
 
     } catch (error) {
         core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
