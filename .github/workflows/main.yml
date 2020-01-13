@@ -25,10 +25,10 @@ jobs:
         APP_FILE_PATH: "./solutions/spfx-o-365-cli-action.sppkg"
         SCOPE: "sitecollection"
         SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/testgroup1"
-        SKIP_FEATURE_DEPLOYMENT: true,
-        OVERWRITE: true,
-        VERBOSE: true,
-        DEBUG: true
+        SKIP_FEATURE_DEPLOYMENT: "true",
+        OVERWRITE: "true",
+        VERBOSE: "true",
+        DEBUG: "true"
     
     - name: ShowAppId
       run: echo "App Id - ${{steps.deploy.outputs.APP_ID}}"
