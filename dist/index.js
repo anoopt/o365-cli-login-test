@@ -68,26 +68,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(682));
 const exec = __importStar(__webpack_require__(736));
 const io = __importStar(__webpack_require__(120));
-var cliPath;
+let o365CLIPath;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let cliInstallCommand = "npm install -g @pnp/office365-cli";
+            core.info("Installing Office 365 CLI.");
+            let o365CLIInstallCommand = "npm install -g @pnp/office365-cli";
             if (process.env.RUNNER_OS == "Windows") {
-                yield exec.exec(cliInstallCommand);
+                let installOutput = yield exec.exec(o365CLIInstallCommand);
             }
             else {
-                yield exec.exec(`sudo ${cliInstallCommand}`);
+                let installOutput = yield exec.exec(`sudo ${o365CLIInstallCommand}`);
             }
-            cliPath = yield io.which("o365", true);
-            let username = core.getInput("USERNAME");
-            let password = core.getInput("PASSWORD");
+            o365CLIPath = yield io.which("o365", true);
+            core.info("Completed installing Office 365 CLI.");
+            core.info("Logging in to the tenant.");
+            const username = core.getInput("USERNAME");
+            const password = core.getInput("PASSWORD");
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
             core.info("Login successful.");
         }
         catch (error) {
-            core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
+            core.error("Login to the tenant failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
             core.setFailed(error);
         }
     });
@@ -95,7 +98,7 @@ function main() {
 function executeO365CLICommand(command) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield exec.exec(`"${cliPath}" ${command}`, [], {});
+            yield exec.exec(`"${o365CLIPath}" ${command}`, [], {});
         }
         catch (error) {
             throw new Error(error);
