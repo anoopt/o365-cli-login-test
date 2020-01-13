@@ -6,9 +6,13 @@ var cliPath: string;
 
 async function main() {
     try{
-        console.log(process.env.RUNNER_OS);
+        let cliInstallCommand: string = "npm install -g @pnp/office365-cli";
 
-        await exec.exec("npm install -g @pnp/office365-cli");
+        if(process.env.RUNNER_OS == "Windows") {
+            await exec.exec(cliInstallCommand);
+        } else {
+            await exec.exec(`sudo ${cliInstallCommand}`);
+        }
         
         cliPath = await io.which("o365", true);
         
@@ -19,7 +23,6 @@ async function main() {
         await executeO365CLICommand("status");
         console.log("Login successful.");
         
-
     } catch (error) {
         core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
         core.setFailed(error);
