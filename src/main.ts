@@ -16,8 +16,8 @@ async function main() {
         
         cliPath = await io.which("o365", true);
         
-        let username = process.env.USERNAME;
-        let password = process.env.PASSWORD;
+        let username = core.getInput("USERNAME");
+        let password = core.getInput("PASSWORD");
         
         await executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
         await executeO365CLICommand("status");

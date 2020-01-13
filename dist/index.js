@@ -80,8 +80,8 @@ function main() {
                 yield exec.exec(`sudo ${cliInstallCommand}`);
             }
             cliPath = yield io.which("o365", true);
-            let username = process.env.USERNAME;
-            let password = process.env.PASSWORD;
+            let username = core.getInput("USERNAME");
+            let password = core.getInput("PASSWORD");
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
             core.info("Login successful.");
