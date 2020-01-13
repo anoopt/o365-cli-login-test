@@ -18,7 +18,7 @@ jobs:
         USERNAME: ${{ secrets.username }}
         PASSWORD: ${{ secrets.password }}
     
-    - name: Run-script
+    - name: Runscript
       uses: anoopt/o365-cli-runscript-test@master
       with:
         O365_CLI_SCRIPT: |
