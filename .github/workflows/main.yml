@@ -18,7 +18,7 @@ jobs:
         USERNAME: ${{ secrets.username }}
         PASSWORD: ${{ secrets.password }}
     
-    - name: Runscript
+    - name: Deploy
       uses: anoopt/o365-cli-runscript-test@master
       with:
         APP_FILE_PATH: "./solutions/spfx-cicd.sppkg"
