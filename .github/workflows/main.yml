@@ -18,4 +18,6 @@ jobs:
         USERNAME: ${{ secrets.username }}
         PASSWORD: ${{ secrets.password }}
     
-  
+    - name: Runscript
+      shell: pwsh
+      run: ./scripts/mail.ps1
