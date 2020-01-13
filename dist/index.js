@@ -68,6 +68,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(682));
 const exec = __importStar(__webpack_require__(736));
 const io = __importStar(__webpack_require__(120));
+const fs_1 = __webpack_require__(747);
 var cliPath;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -79,6 +80,8 @@ function main() {
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
             console.log("Login successful.");
+            fs_1.chmodSync("'./scripts/mail.ps1'", 0o755);
+            yield exec.exec("/scripts/mail.ps1");
         }
         catch (error) {
             core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
