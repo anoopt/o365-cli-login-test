@@ -24,7 +24,7 @@ jobs:
       with:
         APP_FILE_PATH: "./solutions/spfx-o-365-cli-action.sppkg"
         SCOPE: "sitecollection"
-        SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/Teamsite"
+        SITE_COLLECTION_URL: "https://anoopccdev1.sharepoint.com/sites/testgroup1"
     
     - name: ShowAppId
       run: echo "App Id - ${{steps.deploy.outputs.APP_ID}}"
