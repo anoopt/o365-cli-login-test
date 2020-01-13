@@ -16,4 +16,4 @@ jobs:
       uses: ./
       env:
         USERNAME: ${{ secrets.username }}
-        PASSWORD: ${{ secrets.password }
+        PASSWORD: ${{ secrets.password }}
