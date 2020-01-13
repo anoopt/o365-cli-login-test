@@ -22,7 +22,7 @@ jobs:
       id: deploy
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        APP_FILE_PATH: "./solutions/spfx-cicd.sppkg"
+        APP_FILE_PATH: "./solutions/spfx-cicd.sppkgg"
     
     - name: ShowAppId
       run: echo "App Id - ${{steps.deploy.outputs.APP_ID}}"
