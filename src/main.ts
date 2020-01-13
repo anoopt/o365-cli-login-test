@@ -12,9 +12,9 @@ async function main() {
         const options: any = {};
         options.silent = true;
         if(process.env.RUNNER_OS == "Windows") {
-            let installOutput: any = await exec.exec(o365CLIInstallCommand, [], options);
+            await exec.exec(o365CLIInstallCommand, [], options);
         } else {
-            let installOutput: any = await exec.exec(`sudo ${o365CLIInstallCommand}`, [], options);
+            await exec.exec(`sudo ${o365CLIInstallCommand}`, [], options);
         }
         o365CLIPath = await io.which("o365", true);
         
