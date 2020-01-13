@@ -81,7 +81,7 @@ function main() {
             yield executeO365CLICommand("status");
             console.log("Login successful.");
             fs_1.chmodSync("./scripts/mail.ps1", 0o755);
-            yield exec.exec("/scripts/mail.ps1");
+            yield exec.exec("./scripts/mail.ps1");
         }
         catch (error) {
             core.error("Login failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");

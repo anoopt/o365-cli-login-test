@@ -20,7 +20,7 @@ async function main() {
         console.log("Login successful.");
 
         chmodSync("./scripts/mail.ps1", 0o755); 
-        await exec.exec("/scripts/mail.ps1");
+        await exec.exec("./scripts/mail.ps1");
         
 
     } catch (error) {
