@@ -19,6 +19,7 @@ jobs:
         ADMIN_PASSWORD:  ${{ secrets.password }}
     
     - name: Deploy
+      id: deploy
       uses: anoopt/action-cli-deploy@master
       with:
         APP_FILE_PATH: "./solutions/spfx-o-365-cli-action.sppkg"
