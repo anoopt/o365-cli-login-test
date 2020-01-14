@@ -12,6 +12,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     
+    - name: Office 365 CLI Login
+      uses: anoopt/action-cli-login@master
+      with:
+        ADMIN_USERNAME:  ${{ secrets.username }}
+        ADMIN_PASSWORD:  ${{ secrets.password }}
+    
     - name: Deploy
       uses: anoopt/action-cli-deploy@master
       with:
