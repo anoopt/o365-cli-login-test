@@ -5,9 +5,9 @@ branding:
   icon: "calendar"
   color: "orange"
 inputs:
-  USERNAME:
+  ADMIN_USERNAME:
     description: "Username."
-  PASSWORD:
+  ADMIN_PASSWORD:
     description: "Password."
 runs:
   using: "node12"
