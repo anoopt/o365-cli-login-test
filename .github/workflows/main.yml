@@ -1,4 +1,4 @@
-name: O365 CLI Test
+name: O365 CLI Commands Test
 
 on: [push]
 
