@@ -1,6 +1,10 @@
 name: O365 CLI Commands Test
 
 on: [push]
+env:
+  CLI_COMMAND: '${{ env.CLI_COMMAND }}'
+  BASH_SCRIPT: './scripts/mail.sh'
+  PS_SCRIPT: './scripts/mail.ps1'
 
 jobs:
   o365-cli-test-ubuntu:
@@ -21,20 +25,92 @@ jobs:
     - name: Runscript Bash
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        O365_CLI_SCRIPT: o365 spo tenant appcatalogurl get
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
     
     - name: Runscript PS
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        O365_CLI_SCRIPT: o365 spo tenant appcatalogurl get
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
         IS_POWERSHELL: true
   
     - name: Runscript Bash file
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        O365_CLI_SCRIPT_PATH: './scripts/mail.sh'
+        O365_CLI_SCRIPT_PATH: ${{ env.BASH_SCRIPT }}
     
     - name: Runscript PS file
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        O365_CLI_SCRIPT_PATH: "./scripts/mail.ps1"
+        O365_CLI_SCRIPT_PATH: ${{ env.PS_SCRIPT }}
+
+  o365-cli-test-windows:
+    runs-on: windows-latest
+    name: O365 CLI commands Windows
+    
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    - name: Office 365 CLI Login
+      uses: ./
+      with:
+        ADMIN_USERNAME:  ${{ secrets.username }}
+        ADMIN_PASSWORD:  ${{ secrets.password }}
+    
+    - name: Runscript Bash
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
+    
+    - name: Runscript PS
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
+        IS_POWERSHELL: true
+
+    - name: Runscript Bash file
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT_PATH: ${{ env.BASH_SCRIPT }}
+    
+    - name: Runscript PS file
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT_PATH: ${{ env.PS_SCRIPT }}
+
+  o365-cli-test-macos:
+    runs-on: macos-latest
+    name: O365 CLI commands Mac OS
+    
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    - name: Office 365 CLI Login
+      uses: ./
+      with:
+        ADMIN_USERNAME:  ${{ secrets.username }}
+        ADMIN_PASSWORD:  ${{ secrets.password }}
+    
+    - name: Runscript Bash
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
+    
+    - name: Runscript PS
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT: ${{ env.CLI_COMMAND }}
+        IS_POWERSHELL: true
+    
+    - name: Runscript Bash file
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT_PATH: ${{ env.BASH_SCRIPT }}
+    
+    - name: Runscript PS file
+      uses: anoopt/o365-cli-runscript-test@master
+      with:
+        O365_CLI_SCRIPT_PATH: ${{ env.PS_SCRIPT }}
