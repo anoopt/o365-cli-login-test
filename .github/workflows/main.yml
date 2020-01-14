@@ -2,7 +2,7 @@ name: O365 CLI Commands Test
 
 on: [push]
 env:
-  CLI_COMMAND: '${{ env.CLI_COMMAND }}'
+  CLI_COMMAND: 'o365 spo tenant appcatalogurl get'
   BASH_SCRIPT: './scripts/mail.sh'
   PS_SCRIPT: './scripts/mail.ps1'
 
