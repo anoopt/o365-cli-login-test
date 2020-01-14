@@ -22,8 +22,8 @@ async function main() {
 
         info("Logging in to the tenant...");
 
-        const username: string = getInput("USERNAME");
-        const password: string = getInput("PASSWORD");
+        const username: string = getInput("ADMIN_USERNAME");
+        const password: string = getInput("ADMIN_PASSWORD");
         await executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
         await executeO365CLICommand("status");
 
