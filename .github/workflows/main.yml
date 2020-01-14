@@ -32,7 +32,7 @@ jobs:
     - name: Runscript Bash file
       uses: anoopt/o365-cli-runscript-test@master
       with:
-        O365_CLI_SCRIPT_PATH: "./scripts/mail.sh"
+        O365_CLI_SCRIPT_PATH: './scripts/mail.sh'
     
     - name: Runscript PS file
       uses: anoopt/o365-cli-runscript-test@master
