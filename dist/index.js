@@ -962,15 +962,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = __webpack_require__(470);
+const core = __importStar(__webpack_require__(470));
 const exec_1 = __webpack_require__(986);
 const io_1 = __webpack_require__(1);
 let o365CLIPath;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            core_1.info("Installing Office 365 CLI.");
+            const username = core.getInput("ADMIN_USERNAME", { required: true });
+            const password = core.getInput("ADMIN_PASSWORD", { required: true });
+            core.info("ℹ️ Installing Office 365 CLI...");
             let o365CLIInstallCommand = "npm install -g @pnp/office365-cli";
             const options = {};
             options.silent = true;
@@ -981,17 +990,15 @@ function main() {
                 yield exec_1.exec(`sudo ${o365CLIInstallCommand}`, [], options);
             }
             o365CLIPath = yield io_1.which("o365", true);
-            core_1.info("Completed installing Office 365 CLI.");
-            core_1.info("Logging in to the tenant...");
-            const username = core_1.getInput("ADMIN_USERNAME");
-            const password = core_1.getInput("ADMIN_PASSWORD");
+            core.info("✅ Completed installing Office 365 CLI.");
+            core.info("ℹ️ Logging in to the tenant...");
             yield executeO365CLICommand(`login --authType password --userName ${username} --password ${password}`);
             yield executeO365CLICommand("status");
-            core_1.info("Login successful.");
+            core.info("✅ Login successful.");
         }
-        catch (error) {
-            error("Login to the tenant failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
-            core_1.setFailed(error);
+        catch (err) {
+            core.error("🚨 Login to the tenant failed. Please check the credentials. For more information refer https://aka.ms/create-secrets-for-GitHub-workflows");
+            core.setFailed(err);
         }
     });
 }
@@ -1000,8 +1007,8 @@ function executeO365CLICommand(command) {
         try {
             yield exec_1.exec(`"${o365CLIPath}" ${command}`, [], {});
         }
-        catch (error) {
-            throw new Error(error);
+        catch (err) {
+            throw new Error(err);
         }
     });
 }
