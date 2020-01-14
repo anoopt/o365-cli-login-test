@@ -2,10 +2,10 @@
   "name": "cli-action-login",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build"
+    "build": "ncc build src\\main.ts"
   },
   "author": "",
   "license": "ISC",
