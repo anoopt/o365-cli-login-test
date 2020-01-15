@@ -114,3 +114,4 @@ jobs:
       uses: anoopt/o365-cli-runscript-test@master
       with:
         O365_CLI_SCRIPT_PATH: ${{ env.PS_SCRIPT }}
+        
